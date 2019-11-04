@@ -8,7 +8,8 @@ const addNotes = function (title, body){
         body: body
     })
     //console.log(note)
-    saveNotes(note)
+    saveNotes(note) 
+    
 }
 
 const loadNotes = function (){
