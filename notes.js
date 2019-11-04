@@ -1,15 +1,21 @@
-
 const fs = require('fs')
 
 const addNotes = function (title, body){
-    const note = loadNotes()
-    note.push({
-        title: title,
-        body: body
+    const notes = loadNotes()
+    duplicateNotes = notes.filter(function(note){
+        return note.title === title;
     })
-    //console.log(note)
-    saveNotes(note) 
-    
+    if( duplicateNotes == 0){
+        notes.push({
+            title: title,
+            body: body
+        })        
+        saveNotes(notes) 
+        console.log("Note has been added")
+    } else {
+        console.log("Title already exist")
+    }
+        
 }
 
 const loadNotes = function (){
@@ -27,7 +33,11 @@ const saveNotes = function(data){
     console.log(jsonData)
     fs.writeFileSync('notes.json', jsonData)
 }
+
+const removeNote = function(title){
+    
+}
 module.exports = {
     addNotes,
-    loadNotes
+    removeNote
 }
