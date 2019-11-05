@@ -1,7 +1,6 @@
 
 const yargs = require('yargs');
 const notes = require('./notes');
-// console.log(notes())
 
 // console.log( chalk.red.inverse('success') )
 yargs.command({
@@ -19,7 +18,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler : function (args) {
+    handler (args) {
         notes.addNotes(args.title, args.body)
     }
 })
@@ -34,7 +33,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler : function (args) {
+    handler(args) {
         notes.removeNote(args.title)
     }
 })
@@ -54,7 +53,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler : function (args) {
+    handler(args) {
         console.log('Title : ' + args.title + args.body)
     }
 })
@@ -67,7 +66,7 @@ yargs.command({
             describe : 'read'
         }
     },
-    handler : function (args) {
+    handler(args) {
         console.log(args.title)
     }
 })
