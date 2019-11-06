@@ -41,20 +41,10 @@ yargs.command({
 yargs.command({
     command : 'list',
     describe : 'list a note',
-    builder : {
-        title : {
-            describe: 'title for listing',
-            demandOption: true ,
-            type: 'string'
-        },
-        body : {
-            describe: 'body for listing',
-            demandOption: true,
-            type: 'string'
-        }
-    },
-    handler(args) {
-        console.log('Title : ' + args.title + args.body)
+    
+    handler() {
+        notes.listNotes();
+        //console.log('success') 
     }
 })
 
@@ -63,11 +53,13 @@ yargs.command({
     describe : 'read a note',
     builder : {
         title : {
-            describe : 'read'
+            describe : 'read',
+            demandOption : true,
+            type : 'string'
         }
     },
     handler(args) {
-        console.log(args.title)
+        notes.readNote(args.title);
     }
 })
 
